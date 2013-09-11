@@ -27,5 +27,9 @@ default:
   layout:         layout
 
 signinSuccess:
+
+  stylesheets:
+    - signin.css
+
   has_layout:     true
   layout:         sfGuardAuthLayout

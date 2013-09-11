@@ -41,3 +41,8 @@ all:
 
     secure_module:          sfGuardAuth
     secure_action:          secure
+
+    #Locales
+    charset:                utf-8
+    i18n:                   true
+    default_culture:        es_ES
