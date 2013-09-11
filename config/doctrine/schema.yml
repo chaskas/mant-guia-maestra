@@ -1,0 +1,104 @@
+Categorias:
+  connection: doctrine
+  tableName: categorias
+  columns:
+    idcategoria: { type: integer(4), fixed: false, unsigned: false, primary: true, autoincrement: false }
+    nombrecategoria: { type: string(100), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+  relations:
+    Subcategoria: { local: idcategoria, foreign: idcategoria, type: many }
+
+Detalleversion:
+  connection: doctrine
+  tableName: detalleversion
+  columns:
+    iddetalleversion: { type: integer(4), fixed: false, unsigned: false, primary: true, autoincrement: true }
+    idversion: { type: integer(4), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    nropagina: { type: float(4), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    accion: { type: string(15), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+  relations:
+    Version: { local: idversion, foreign: idversion, type: one }
+
+Paginas:
+  connection: doctrine
+  tableName: paginas
+  columns:
+    idpagina: { type: integer(4), fixed: false, unsigned: false, primary: true, autoincrement: true }
+    idsubcategoria: { type: integer(4), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    nropagina: { type: float(4), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    imagenprincipal: { type: blob(), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    imagenmini: { type: blob(), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    tipopagina: { type: string(3), fixed: true, unsigned: false, primary: false, notnull: false, autoincrement: false }
+  relations:
+    Subcategoria: { local: idsubcategoria, foreign: idsubcategoria, type: one }
+
+Productopagina:
+  connection: doctrine
+  tableName: productopagina
+  columns:
+    pagina: { type: integer(4), fixed: false, unsigned: false, primary: true, autoincrement: false }
+    sku: { type: string(7), fixed: false, unsigned: false, primary: true, autoincrement: false }
+    tamanofuente: { type: integer(4), fixed: false, unsigned: false, primary: true, autoincrement: false }
+    coorx: { type: integer(4), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    coory: { type: integer(4), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    unidad: { type: string(10), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    comprar: { type: integer(4), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    skupadre: { type: string(7), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    padre: { type: integer(4), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+
+ProductopaginaDos:
+  connection: doctrine
+  tableName: productopagina_dos
+  columns:
+    pagina: { type: integer(4), fixed: false, unsigned: false, primary: true, autoincrement: false }
+    sku: { type: string(7), fixed: false, unsigned: false, primary: true, autoincrement: false }
+    tamanofuente: { type: integer(4), fixed: false, unsigned: false, primary: true, autoincrement: false }
+    coorx: { type: integer(4), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    coory: { type: integer(4), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    unidad: { type: string(10), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    comprar: { type: integer(4), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    skupadre: { type: string(7), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    padre: { type: integer(4), fixed: false, unsigned: false, primary: false, default: '1', notnull: false, autoincrement: false }
+
+Subcategoria:
+  connection: doctrine
+  tableName: subcategoria
+  columns:
+    idsubcategoria: { type: integer(4), fixed: false, unsigned: false, primary: true, autoincrement: false }
+    idcategoria: { type: integer(4), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    nombresubcategoria: { type: string(150), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    paginicio: { type: integer(4), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    pagfin: { type: integer(4), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+  relations:
+    Categorias: { local: idcategoria, foreign: idcategoria, type: one }
+    Paginas: { local: idsubcategoria, foreign: idsubcategoria, type: many }
+
+Tiendas:
+  connection: doctrine
+  tableName: tiendas
+  columns:
+    idtienda: { type: integer(4), fixed: false, unsigned: false, primary: true, autoincrement: false }
+    idzona: { type: integer(4), fixed: false, unsigned: false, primary: false, default: '0', notnull: true, autoincrement: false }
+    nombretienda: { type: string(150), fixed: false, unsigned: false, primary: false, notnull: true, autoincrement: false }
+    latitud: { type: string(20), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    longitud: { type: string(20), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+  relations:
+    Zonas: { local: idzona, foreign: idzona, type: one }
+    Tiendagrupo: { local: idtienda, foreign: idtienda, type: many }
+
+Version:
+  connection: doctrine
+  tableName: version
+  columns:
+    idversion: { type: integer(4), fixed: false, unsigned: false, primary: true, autoincrement: true }
+    descversion: { type: float(8), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+  relations:
+    Detalleversion: { local: idversion, foreign: idversion, type: many }
+
+Zonas:
+  connection: doctrine
+  tableName: zonas
+  columns:
+    idzona: { type: integer(4), fixed: false, unsigned: false, primary: true, autoincrement: false }
+    nombrezona: { type: string(150), fixed: false, unsigned: false, primary: false, notnull: true, autoincrement: false }
+  relations:
+    Tiendas: { local: idzona, foreign: idzona, type: many }
