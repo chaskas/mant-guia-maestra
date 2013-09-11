@@ -49,6 +49,13 @@
             <li><a href="#">Usuarios</a></li>
             <li><a href="#">Versiones</a></li>
           </ul>
+          <?php if ($sf_user->isAuthenticated()): ?>
+          <p class="navbar-text pull-right">
+            Bienvenido 
+            <a href="#" class="navbar-link"><?php echo $sf_user->getGuardUser()->getFirstName(); ?></a> 
+            <a href="<?php echo url_for('@sf_guard_signout'); ?>" class="btn btn-primary btn-xs">Salir</a>
+          </p>
+          <?php endif; ?>
         </div>
       </div>
 

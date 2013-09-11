@@ -2,4 +2,8 @@
 # http://www.symfony-project.org/reference/1_4/en/11-App
 
 # default values
-#all:
+all:
+  sf_guard_plugin:
+    remember_key_expiration_age:  1800   # 30 minutes in seconds
+    remember_cookie_name:         GuiaMaestraSodimac
+    success_signout_url:          homepage         # the plugin use the referer as default
