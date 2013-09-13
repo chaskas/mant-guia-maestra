@@ -1,6 +1,6 @@
 <div class="panel panel-default">
-  <div class="panel-heading">Editar Categoría
-    <a href="<?php echo url_for('categoria/index') ?>" class="btn btn-primary btn-xs pull-right" alt="Nuevo" title="Nuevo">
+  <div class="panel-heading">Nueva Subategoría
+    <a href="<?php echo url_for('subcategoria/index') ?>" class="btn btn-primary btn-xs pull-right" alt="Nuevo" title="Nuevo">
       <span class="glyphicon glyphicon-arrow-left"></span> Atrás
     </a>
   </div>

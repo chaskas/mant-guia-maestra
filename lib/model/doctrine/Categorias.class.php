@@ -12,4 +12,8 @@
  */
 class Categorias extends BaseCategorias
 {
+  public function __toString()
+  {
+    return $this->getNombrecategoria() != null ? $this->getNombrecategoria() : ''; 
+  }
 }

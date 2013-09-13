@@ -23,37 +23,25 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="dropdown">
+            <li><a href="#">Productos</a></li>
+            <li><a href="#">Páginas</a></li>
+            <li><a href="<?php echo url_for('user/index') ?>">Usuarios</a></li>
+            <!-- <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Páginas <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Páginas</a></li>
-                <li><a href="#">Categorías</a></li>
-                <li><a href="#">Subcategorías</a></li>
+                <li><a href="<?php //echo url_for('categoria/index') ?>">Categorías</a></li>
+                <li><a href="<?php //echo url_for('subcategoria/index') ?>">Subcategorías</a></li>
               </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tiendas <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Tiendas</a></li>
-                <li><a href="#">Grupos</a></li>
-                <li><a href="#">Zonas</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Productos <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Productos</a></li>
-                <li><a href="#">Grupos</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Usuarios</a></li>
-            <li><a href="#">Versiones</a></li>
+            </li> -->
           </ul>
           <?php if ($sf_user->isAuthenticated()): ?>
           <p class="navbar-text pull-right">
             Bienvenido 
             <a href="#" class="navbar-link"><?php echo $sf_user->getGuardUser()->getFirstName(); ?></a> 
-            <a href="<?php echo url_for('@sf_guard_signout'); ?>" class="btn btn-primary btn-xs">Salir</a>
+            <a href="<?php echo url_for('@sf_guard_signout'); ?>" class="btn btn-default btn-xs">
+              <span class="glyphicon glyphicon-off"></span>
+            </a>
           </p>
           <?php endif; ?>
         </div>

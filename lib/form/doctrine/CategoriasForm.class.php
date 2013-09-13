@@ -12,5 +12,6 @@ class CategoriasForm extends BaseCategoriasForm
 {
   public function configure()
   {
+    $this->widgetSchema['nombrecategoria']->setLabel('Nombre');
   }
 }

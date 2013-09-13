@@ -12,5 +12,9 @@ class SubcategoriaForm extends BaseSubcategoriaForm
 {
   public function configure()
   {
+    $this->widgetSchema['idcategoria']->setLabel('Categoría');
+    $this->widgetSchema['nombresubcategoria']->setLabel('Nombre');
+    $this->widgetSchema['paginicio']->setLabel('Inicio');
+    $this->widgetSchema['pagfin']->setLabel('Fin');
   }
 }

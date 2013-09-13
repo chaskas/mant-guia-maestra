@@ -16,19 +16,23 @@
       <?php foreach ($categorias as $categoria): ?>
       <tr>
         <td>
-          <a href="<?php echo url_for('categoria/edit?idcategoria='.$categoria->getIdcategoria()) ?>"><?php echo $categoria->getIdcategoria() ?></a>
+          <a href="<?php echo url_for('categoria/edit?idcategoria='.$categoria->getIdcategoria()) ?>">
+            <?php echo $categoria->getIdcategoria() ?>
+          </a>
         </td>
         <td>
           <?php echo $categoria->getNombrecategoria() ?>
         </td>
         <td>
           <div class="btn-group">
-            <a class="btn btn-default btn-xs" alt="Editar" title="Editar" href="<?php echo url_for('categoria/edit?idcategoria='.$categoria->getIdcategoria()) ?>">
-              <span class="glyphicon glyphicon-edit"></span> 
-            </a>
-            <a class="btn btn-danger btn-xs" alt="Eliminar" title="Eliminar">
-              <span class="glyphicon glyphicon-remove"></span> 
-            </a>
+            <?php echo link_to(
+                        '<span class="glyphicon glyphicon-edit"></span>',
+                        'categoria/edit?idcategoria='.$categoria->getIdcategoria(),
+                        array('class'=>'btn btn-default btn-xs', 'alt'=>'Editar', 'title'=>'Editar')); ?>
+            <?php echo link_to(
+                        '<span class="glyphicon glyphicon-remove"></span>',
+                        'categoria/delete?idcategoria='.$categoria->getIdcategoria(),
+                        array('method'=>'delete','confirm' => '¿Estás seguro?','class'=>'btn btn-danger btn-xs', 'alt'=>'Eliminar', 'title'=>'Eliminar')); ?>
           </div>
         </td>
       </tr>
