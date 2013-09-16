@@ -25,7 +25,8 @@
           <ul class="nav navbar-nav">
             <li><a href="#">Productos</a></li>
             <li><a href="#">Páginas</a></li>
-            <li><a href="<?php echo url_for('user/index') ?>">Usuarios</a></li>
+            <li <?php if(in_array($sf_context->getModuleName(),array('user'))) echo "class='active'" ?>>
+              <a href="<?php echo url_for('user/index') ?>">Usuarios</a></li>
             <!-- <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Páginas <b class="caret"></b></a>
               <ul class="dropdown-menu">
