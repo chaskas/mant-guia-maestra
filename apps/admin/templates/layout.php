@@ -5,6 +5,7 @@
     <link rel="shortcut icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include_stylesheets() ?>
+    <?php include_javascripts() ?>
   </head>
   <body>
     
@@ -23,7 +24,8 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">Productos</a></li>
+            <li <?php if(in_array($sf_context->getModuleName(),array('producto'))) echo "class='active'" ?>>
+              <a href="<?php echo url_for('producto/index') ?>">Productos</a></li>
             <li><a href="#">Páginas</a></li>
             <li <?php if(in_array($sf_context->getModuleName(),array('user'))) echo "class='active'" ?>>
               <a href="<?php echo url_for('user/index') ?>">Usuarios</a></li>
@@ -48,10 +50,23 @@
         </div>
       </div>
 
+      <?php if ($sf_user->hasFlash('success')): ?>
+        <div class="alert alert-success alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <strong>Éxito,</strong> <?php echo $sf_user->getFlash('success') ?>
+        </div>
+      <?php endif ?>
+      <?php if ($sf_user->hasFlash('error')): ?>
+        <div class="alert alert-danger alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <strong>Error,</strong> <?php echo $sf_user->getFlash('error') ?>
+        </div>
+      <?php endif ?>
+
       <?php echo $sf_content ?>
 
     </div>
 
-    <?php include_javascripts() ?>
+    
   </body>
 </html>

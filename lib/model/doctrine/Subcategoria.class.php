@@ -12,4 +12,8 @@
  */
 class Subcategoria extends BaseSubcategoria
 {
+  public function __toString()
+{
+  return $this->getNombreSubcategoria() != null ? $this->getNombreSubcategoria() : ''; 
+}
 }

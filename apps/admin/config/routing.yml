@@ -1,6 +1,25 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+
+api_get_subcategoria_by_categoria:
+  url:     /api/get/categoria/:id/subcategoria/:sf_format
+  class:   sfDoctrineRoute
+  param:   { module: producto, action: getSubcategoriasByCategoria }
+  options: { model: Subcategoria, type: list }
+  requirements:
+    sf_format: (json)
+    id: \d+
+
+api_get_pagina_by_subcategoria:
+  url:     /api/get/subcategoria/:id/pagina/:sf_format
+  class:   sfDoctrineRoute
+  param:   { module: producto, action: getPaginasBySubcategoria }
+  options: { model: Subcategoria, type: object }
+  requirements:
+    sf_format: (json)
+    id: \d+
+
 sf_guard_signin:
   url:   /login
   param: { module: sfGuardAuth, action: signin }
