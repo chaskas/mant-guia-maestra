@@ -33,7 +33,9 @@
                 subcategorias.push(subcategoria);
               });
               $('#buscador_subcategoria').empty();
+              $('#buscador_subcategoria').append(new Option('Seleccione...',''));
               $('#buscador_pagina').empty();
+
               if(subcategorias.length > 0)$("#buscador_subcategoria").removeAttr("disabled");
               $.each(subcategorias,function(key,val){
                 $('#buscador_subcategoria').append(new Option($('<div/>').html(val[1]).text(),val[0]));
@@ -64,10 +66,15 @@
               $.each(json,function(key,val){
                 var pagina = new Array();
                 $.each(val,function(key,val){
-                  if(key=='nroPagina')
+                  if(key=='IdPagina')
                   {
                     id = val;
                     pagina[0] = val;
+                  }
+                  if(key=='NroPagina')
+                  {
+                    id = val;
+                    pagina[1] = val;
                   }
                 });
                 paginas.push(pagina);
@@ -76,7 +83,7 @@
               $('#buscador_pagina').empty();
               if(paginas.length > 0)$("#buscador_pagina").removeAttr("disabled");
               $.each(paginas,function(key,val){
-                $('#buscador_pagina').append(new Option($('<div/>').html(val[0]).text(),val[0]));
+                $('#buscador_pagina').append(new Option($('<div/>').html(val[1]).text(),val[0]));
               });
             },
             error: function (xhr, textStatus, errorThrown) {
@@ -99,28 +106,30 @@
   </div>
   <div class="panel panel-body">
     <form class="form-inline" role="form" method="POST" action="<?php echo url_for('producto/index') ?>">
-      <div class="form-group">
-        <label for="<?php echo $form['categoria']->getWidget()->getAttribute('id') ?>">
-          <?php echo $form['categoria']->renderLabel() ?>
-        </label>
-        <?php echo $form['categoria']->renderError() ?>
-        <?php echo $form['categoria']->render(array('class'=>"form-control input-sm")) ?>
+      <div class="row">
+        <div class="form-group col-md-4">
+          <label for="<?php echo $form['categoria']->getWidget()->getAttribute('id') ?>">
+            <?php echo $form['categoria']->renderLabel() ?>
+          </label>
+          <?php echo $form['categoria']->renderError() ?>
+          <?php echo $form['categoria']->render(array('class'=>"form-control input-sm")) ?>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="<?php echo $form['subcategoria']->getWidget()->getAttribute('id') ?>">
+            <?php echo $form['subcategoria']->renderLabel() ?>
+          </label>
+          <?php echo $form['subcategoria']->renderError() ?>
+          <?php echo $form['subcategoria']->render(array('class'=>"form-control input-sm")) ?>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="<?php echo $form['pagina']->getWidget()->getAttribute('id') ?>">
+            <?php echo $form['pagina']->renderLabel() ?>
+          </label>
+          <?php echo $form['pagina']->renderError() ?>
+          <?php echo $form['pagina']->render(array('class'=>"form-control input-sm")) ?>
+        </div>
+        <button type="submit" class="btn btn-default input-sm" style="margin-top:30px">Buscar</button>
       </div>
-      <div class="form-group">
-        <label for="<?php echo $form['subcategoria']->getWidget()->getAttribute('id') ?>">
-          <?php echo $form['subcategoria']->renderLabel() ?>
-        </label>
-        <?php echo $form['subcategoria']->renderError() ?>
-        <?php echo $form['subcategoria']->render(array('class'=>"form-control input-sm")) ?>
-      </div>
-      <div class="form-group">
-        <label for="<?php echo $form['pagina']->getWidget()->getAttribute('id') ?>">
-          <?php echo $form['pagina']->renderLabel() ?>
-        </label>
-        <?php echo $form['pagina']->renderError() ?>
-        <?php echo $form['pagina']->render(array('class'=>"form-control input-sm")) ?>
-      </div>
-      <button type="submit" class="btn btn-default input-sm" style="margin-top:30px">Buscar</button>
     </form>
   </div>
 </div>
@@ -128,7 +137,7 @@
 <?php if(count($productopaginas) > 0) : ?>
 
 <div class="panel panel-default">
-  <div class="panel-heading">Productos Página <?php echo $buscador['pagina'] ?>
+  <div class="panel-heading">Productos Página <?php echo $pagina->getNropagina(); ?>
     <a href="<?php echo url_for('producto/new') ?>" class="btn btn-success btn-xs pull-right" alt="Nuevo" title="Nuevo">
       <span class="glyphicon glyphicon-plus"></span> Nuevo
     </a>

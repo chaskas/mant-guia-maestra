@@ -43,7 +43,7 @@ class BuscaProductoForm extends sfForm
     ));
 
     $this->widgetSchema['pagina'] = new sfWidgetFormChoice(array(
-        'choices'   =>  array(10=>10,20=>20,30=>30),
+        'choices'   =>  array('Seleccione...'),
         'expanded'  =>  false,
         'multiple'  =>  false
     ));

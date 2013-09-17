@@ -19,6 +19,12 @@ class subcategoriaActions extends sfActions
 
   public function executeNew(sfWebRequest $request)
   {
+    $lastSubcategoria = Doctrine_Core::getTable('Subcategoria')
+                          ->createQuery('a')
+                          ->orderBy('idsubcategoria DESC')
+                          ->limit(1)
+                          ->execute();
+
     $this->form = new SubcategoriaForm();
   }
 
@@ -67,7 +73,8 @@ class subcategoriaActions extends sfActions
     {
       $subcategoria = $form->save();
 
-      $this->redirect('subcategoria/edit?idsubcategoria='.$subcategoria->getIdsubcategoria());
+      // $this->redirect('subcategoria/edit?idsubcategoria='.$subcategoria->getIdsubcategoria());
+      $this->redirect('subcategoria/new');
     }
   }
 }

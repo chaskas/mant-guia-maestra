@@ -23,6 +23,14 @@
     <?php echo $form['nombresubcategoria']->render(array('class'=>"form-control")) ?>
   </div>
 
+  <div class="form-group">
+    <label for="<?php echo $form['idsubcategoria']->getWidget()->getAttribute('id') ?>">
+      <?php echo $form['idsubcategoria']->renderLabel() ?>
+    </label>
+    <?php echo $form['idsubcategoria']->renderError() ?>
+    <?php echo $form['idsubcategoria']->render(array('class'=>"form-control")) ?>
+  </div>
+
   <hr>
 
   <h4>Páginas</h4>

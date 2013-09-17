@@ -24,6 +24,8 @@ class productoActions extends sfActions
       ->where("pagina = ?", $this->buscador['pagina'])
       ->execute();
 
+      $this->pagina = Doctrine_Core::getTable('Paginas')->find($this->buscador['pagina']);
+
     }
 
 
@@ -109,11 +111,9 @@ class productoActions extends sfActions
     $pagInicio = $subcategoria->getPaginicio();
     $pagFin = $subcategoria->getPagfin();
 
-    $this->paginas = Doctrine_Core::getTable('Productopagina')
+    $this->paginas = Doctrine_Core::getTable('Paginas')
                     ->createQuery('a')
-                    ->groupBy('a.Pagina')
-                    ->where('pagina > ? ',$pagInicio)
-                    ->andWhere('pagina < ?', $pagFin)
+                    ->where('IdSubCategoria = ?',$subcategoria->getIdSubcategoria())
                     ->execute();
 
   }
