@@ -5,16 +5,48 @@ sfGuardUser:
     email_address:  rodrigo@webdevel.cl
     username:       admin
     password:       admin
-    is_super_admin: true
-    Groups:         [Group_admin]
+    is_super_admin: false
+    Groups:         [administradores]
+
+  Sadmgm:
+    first_name:     System
+    last_name:      Administrator
+    email_address:  sadmgm@sodimac.cl
+    username:       sadmgm
+    password:       sadmgm123
+    is_super_admin: false
+    Groups:         [super_administradores]
+
+  User_normal:
+    first_name:     Usuario
+    last_name:      Normal
+    email_address:  normal@sodimac.cl
+    username:       normal
+    password:       normal
+    is_super_admin: false
+    Groups:         [normales]
 
 sfGuardGroup:
-  Group_admin:
+  super_administradores:
+    name:           super-admin
+    description:    Super Administrator group
+    Permissions:    [super_administrador]
+  administradores:
     name:           admin
     description:    Administrator group
-    Permissions:    [Permission_admin]
+    Permissions:    [administrador]
+  normales:
+    name:           normal
+    description:    Normal group
+    Permissions:    [normal]
 
 sfGuardPermission:
-  Permission_admin:
+  super_administrador:
+    name:           super-admin
+    description:    Super Administrator permission
+  administrador:
     name:           admin
     description:    Administrator permission
+  normal:
+    name:           normal
+    description:    Normal permission

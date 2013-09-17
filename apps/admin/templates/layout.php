@@ -27,8 +27,11 @@
             <li <?php if(in_array($sf_context->getModuleName(),array('producto'))) echo "class='active'" ?>>
               <a href="<?php echo url_for('producto/index') ?>">Productos</a></li>
             <li><a href="#">Páginas</a></li>
+            <?php if($sf_user->hasCredential('super-admin')) : ?>
             <li <?php if(in_array($sf_context->getModuleName(),array('user'))) echo "class='active'" ?>>
-              <a href="<?php echo url_for('user/index') ?>">Usuarios</a></li>
+              <a href="<?php echo url_for('user/index') ?>">Usuarios</a>
+            </li>
+            <?php endif; ?>
             <!-- <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Páginas <b class="caret"></b></a>
               <ul class="dropdown-menu">

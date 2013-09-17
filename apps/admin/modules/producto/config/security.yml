@@ -1,0 +1,10 @@
+new:
+  credentials: admin
+create:
+  credentials: admin
+edit:
+  credentials: admin
+update:
+  credentials: admin
+delete:
+  credentials: admin

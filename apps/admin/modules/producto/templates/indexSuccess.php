@@ -138,9 +138,11 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">Productos Página <?php echo $pagina->getNropagina(); ?>
+    <?php if($sf_user->hasCredential('super-admin')) : ?>
     <a href="<?php echo url_for('producto/new') ?>" class="btn btn-success btn-xs pull-right" alt="Nuevo" title="Nuevo">
       <span class="glyphicon glyphicon-plus"></span> Nuevo
     </a>
+    <?php endif; ?>
   </div>
   <table class="table table-hover">
     <thead>
@@ -148,19 +150,26 @@
         <th>Sku</th>
         <th>X</th>
         <th>Y</th>
+        <?php if($sf_user->hasCredential('super-admin')) : ?>
         <th>Opciones</th>
+        <?php endif; ?>
       </tr>
     </thead>
     <tbody>
       <?php foreach ($productopaginas as $productopagina): ?>
       <tr>
         <td>
+          <?php if($sf_user->hasCredential('super-admin')) : ?>
           <a href="<?php echo url_for('producto/edit?pagina='.$productopagina->getPagina().'&sku='.$productopagina->getSku().'&tamanofuente='.$productopagina->getTamanofuente()) ?>">
+          <?php endif; ?>
             <?php echo $productopagina->getSku() ?>
+          <?php if($sf_user->hasCredential('super-admin')) : ?>
           </a>
+          <?php endif; ?>
         </td>
         <td><?php echo $productopagina->getCoorx() ?></td>
         <td><?php echo $productopagina->getCoory() ?></td>
+        <?php if($sf_user->hasCredential('super-admin')) : ?>
         <td>
           <div class="btn-group">
             <?php echo link_to(
@@ -173,6 +182,7 @@
                         array('method'=>'delete','confirm' => '¿Estás seguro?','class'=>'btn btn-danger btn-xs', 'alt'=>'Eliminar', 'title'=>'Eliminar')); ?>
           </div>
         </td>
+        <?php endif; ?>
       </tr>
       <?php endforeach; ?>
     </tbody>

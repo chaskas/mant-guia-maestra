@@ -45,27 +45,22 @@
     <?php echo $form['username']->render(array('class'=>"form-control")) ?>
   </div>
 
-  <div class="form-inline">
-
-    <div class="form-group">
-      <label for="<?php echo $form['is_active']->getWidget()->getAttribute('id') ?>">
-        <?php echo $form['is_active']->renderLabel() ?>
-      </label>
-      <?php echo $form['is_active']->renderError() ?>
-      <?php echo $form['is_active']->render(array('class'=>"form-control")) ?>
-    </div>
-
-    <div class="form-group">
-      <label for="<?php echo $form['is_super_admin']->getWidget()->getAttribute('id') ?>">
-        <?php echo $form['is_super_admin']->renderLabel() ?>
-      </label>
-      <?php echo $form['is_super_admin']->renderError() ?>
-      <?php echo $form['is_super_admin']->render(array('class'=>"form-control")) ?>
-    </div>
-
+  <div class="form-group">
+    <label for="<?php echo $form['is_active']->getWidget()->getAttribute('id') ?>">
+      <?php echo $form['is_active']->renderLabel() ?>
+    </label>
+    <?php echo $form['is_active']->renderError() ?>
+    <?php echo $form['is_active']->render(array('class'=>"form-control")) ?>
   </div>
 
-  <br/>
+  <div class="form-group">
+    <label for="<?php echo $form['permissions_list']->getWidget()->getAttribute('id') ?>">
+      <?php echo $form['permissions_list']->renderLabel() ?>
+    </label>
+    <?php echo $form['permissions_list']->renderError() ?>
+    <?php echo $form['permissions_list']->render(array('class'=>"form-control")) ?>
+  </div>
+
 
   <?php echo $form->renderHiddenFields(false) ?>
   

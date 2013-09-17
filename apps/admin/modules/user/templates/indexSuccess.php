@@ -13,7 +13,6 @@
         <th>Username</th>
         <th>Email</th>
         <th class="center">Activo</th>
-        <th class="center">Admin</th>
         <th>Opciones</th>
       </tr>
     </thead>
@@ -28,7 +27,6 @@
         <td><?php echo $sf_guard_user->getUsername() ?></td>
         <td><?php echo $sf_guard_user->getEmailAddress() ?></td>
         <td class="center"><?php echo $sf_guard_user->getIsActive() == '1' ? '<span class="glyphicon glyphicon-ok"></span>' : '' ?></td>
-        <td class="center"><?php echo $sf_guard_user->getIsSuperAdmin() == '1' ? '<span class="glyphicon glyphicon-ok"></span>' : '' ?></td>
         <td>
           <div class="btn-group">
             <?php echo link_to(

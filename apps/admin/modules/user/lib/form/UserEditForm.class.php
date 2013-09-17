@@ -7,7 +7,7 @@ class UserEditForm extends sfGuardUserForm
     unset(
       $this['updated_at'],
       $this['groups_list'],
-      $this['permissions_list'],
+      $this['is_super_admin'],
       $this['last_login'],
       $this['created_at'],
       $this['salt'],
@@ -26,7 +26,7 @@ class UserEditForm extends sfGuardUserForm
     $this->widgetSchema['email_address']->setLabel('Email');
     $this->widgetSchema['username']->setLabel('Usuario');
     $this->widgetSchema['is_active']->setLabel('Activo');
-    $this->widgetSchema['is_super_admin']->setLabel('Super Administrador');
+    $this->widgetSchema['permissions_list']->setLabel('Permisos');
     
   }
 }
