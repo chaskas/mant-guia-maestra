@@ -26,20 +26,14 @@
           <ul class="nav navbar-nav">
             <li <?php if(in_array($sf_context->getModuleName(),array('producto'))) echo "class='active'" ?>>
               <a href="<?php echo url_for('producto/index') ?>">Productos</a></li>
-            <li><a href="#">Páginas</a></li>
+            <li <?php if(in_array($sf_context->getModuleName(),array('pagina'))) echo "class='active'" ?>>
+              <a href="<?php echo url_for('pagina/index') ?>">Páginas</a>
+            </li>
             <?php if($sf_user->hasCredential('super-admin')) : ?>
             <li <?php if(in_array($sf_context->getModuleName(),array('user'))) echo "class='active'" ?>>
               <a href="<?php echo url_for('user/index') ?>">Usuarios</a>
             </li>
             <?php endif; ?>
-            <!-- <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Páginas <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Páginas</a></li>
-                <li><a href="<?php //echo url_for('categoria/index') ?>">Categorías</a></li>
-                <li><a href="<?php //echo url_for('subcategoria/index') ?>">Subcategorías</a></li>
-              </ul>
-            </li> -->
           </ul>
           <?php if ($sf_user->isAuthenticated()): ?>
           <p class="navbar-text pull-right">

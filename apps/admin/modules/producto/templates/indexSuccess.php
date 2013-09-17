@@ -138,7 +138,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">Productos Página <?php echo $pagina->getNropagina(); ?>
-    <?php if($sf_user->hasCredential('super-admin')) : ?>
+    <?php if($sf_user->hasCredential(array('admin', 'super-admin'), false)) : ?>
     <a href="<?php echo url_for('producto/new') ?>" class="btn btn-success btn-xs pull-right" alt="Nuevo" title="Nuevo">
       <span class="glyphicon glyphicon-plus"></span> Nuevo
     </a>
@@ -150,7 +150,7 @@
         <th>Sku</th>
         <th>X</th>
         <th>Y</th>
-        <?php if($sf_user->hasCredential('super-admin')) : ?>
+        <?php if($sf_user->hasCredential(array('admin', 'super-admin'), false)) : ?>
         <th>Opciones</th>
         <?php endif; ?>
       </tr>
@@ -159,17 +159,17 @@
       <?php foreach ($productopaginas as $productopagina): ?>
       <tr>
         <td>
-          <?php if($sf_user->hasCredential('super-admin')) : ?>
+          <?php if($sf_user->hasCredential(array('admin', 'super-admin'), false)) : ?>
           <a href="<?php echo url_for('producto/edit?pagina='.$productopagina->getPagina().'&sku='.$productopagina->getSku().'&tamanofuente='.$productopagina->getTamanofuente()) ?>">
           <?php endif; ?>
             <?php echo $productopagina->getSku() ?>
-          <?php if($sf_user->hasCredential('super-admin')) : ?>
+          <?php if($sf_user->hasCredential(array('admin', 'super-admin'), false)) : ?>
           </a>
           <?php endif; ?>
         </td>
         <td><?php echo $productopagina->getCoorx() ?></td>
         <td><?php echo $productopagina->getCoory() ?></td>
-        <?php if($sf_user->hasCredential('super-admin')) : ?>
+        <?php if($sf_user->hasCredential(array('admin', 'super-admin'), false)) : ?>
         <td>
           <div class="btn-group">
             <?php echo link_to(

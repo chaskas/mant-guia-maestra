@@ -12,9 +12,26 @@ class paginaActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->paginass = Doctrine_Core::getTable('Paginas')
+
+    $this->paginas = array();
+
+    if($request->isMethod(sfRequest::POST))
+    {
+
+      $this->buscador = $request->getParameter("buscador");
+
+      $this->paginas = Doctrine_Core::getTable('Paginas')
       ->createQuery('a')
+      ->where("IdSubCategoria = ?", $this->buscador['subcategoria'])
+      ->andWhere("TipoPagina = ?", $this->buscador['tipo'])
       ->execute();
+
+      $this->subcategoria = Doctrine_Core::getTable('Subcategoria')->find($this->buscador['subcategoria']);
+
+    }
+
+    $this->form = new BuscaPaginaForm();
+
   }
 
   public function executeNew(sfWebRequest $request)
@@ -69,5 +86,10 @@ class paginaActions extends sfActions
 
       $this->redirect('pagina/edit?idpagina='.$paginas->getIdpagina());
     }
+  }
+  public function executeGetSubcategoriasByCategoria(sfWebRequest $request)
+  {
+    $this->getResponse()->setContentType('application/json');
+    $this->subcategorias = Doctrine_Core::getTable('Subcategoria')->findByIdCategoria($request->getParameter('id'));
   }
 }
