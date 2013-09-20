@@ -105,49 +105,36 @@
     </a>
     <?php endif; ?>
   </div>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Imagen Principal</th>
-        <th>Imagen Mini</th>
-        <?php if($sf_user->hasCredential(array('admin', 'super-admin'), false)) : ?>
-        <th>Opciones</th>
-        <?php endif; ?>
-      </tr>
-    </thead>
-    <tbody>
-      <?php foreach ($paginas as $pagina): ?>
-      <tr>
-        <td>
-          <?php if($sf_user->hasCredential(array('admin', 'super-admin'), false)) : ?>
-          <a href="<?php echo url_for('pagina/edit?idpagina='.$pagina->getIdpagina()) ?>">
-          <?php endif; ?>
-            <?php echo $pagina->getNropagina() ?>
-          <?php if($sf_user->hasCredential(array('admin', 'super-admin'), false)) : ?>
-          </a>
-          <?php endif; ?>
-        </td>
-        <td><?php echo $pagina->getImagenprincipal() ?></td>
-        <td><?php echo $pagina->getImagenmini() ?></td>
-        <?php if($sf_user->hasCredential(array('admin', 'super-admin'), false)) : ?>
-        <td>
-          <div class="btn-group">
-            <?php echo link_to(
-                        '<span class="glyphicon glyphicon-edit"></span>',
-                        'pagina/edit?idpagina='.$pagina->getIdpagina(),
-                        array('class'=>'btn btn-default btn-xs', 'alt'=>'Editar', 'title'=>'Editar')); ?>
-            <?php echo link_to(
-                        '<span class="glyphicon glyphicon-remove"></span>',
-                        'pagina/delete?idpagina='.$pagina->getidPagina(),
-                        array('method'=>'delete','confirm' => '¿Estás seguro?','class'=>'btn btn-danger btn-xs', 'alt'=>'Eliminar', 'title'=>'Eliminar')); ?>
-          </div>
-        </td>
-        <?php endif; ?>
-      </tr>
-      <?php endforeach; ?>
-    </tbody>
-  </table>
+
+  <div class="panel panel-body">
+    <?php $i = 0; ?>
+    <?php foreach ($paginas as $pagina): ?>
+    <?php if($i%3==0) : ?>
+    <div class="row pagina-row">
+    <?php endif; ?>
+    <div class="col-md-4">
+      <?php echo image_tag(url_for('pagina/getImagenPrincipal?id='.$pagina->getIdpagina()),'size=200x246'); ?>
+      <?php echo image_tag(url_for('pagina/getImagenMini?id='.$pagina->getIdpagina())); ?>
+      <!-- <img src="http://placehold.it/200x246">
+      <img src="http://placehold.it/73x90"> -->
+      <div class="btn-group">
+        <?php echo link_to(
+                    '<span class="glyphicon glyphicon-edit"></span>',
+                    'pagina/edit?idpagina='.$pagina->getIdpagina(),
+                    array('class'=>'btn btn-default btn-xs', 'alt'=>'Editar', 'title'=>'Editar')); ?>
+        <?php echo link_to(
+                    '<span class="glyphicon glyphicon-remove"></span>',
+                    'pagina/delete?idpagina='.$pagina->getIdpagina(),
+                    array('method'=>'delete','confirm' => '¿Estás seguro?','class'=>'btn btn-danger btn-xs', 'alt'=>'Eliminar', 'title'=>'Eliminar')); ?>
+      </div>
+    </div>
+    <?php $i++; ?>
+    <?php if($i%3==0) : ?>
+    </div>
+    <?php endif; ?>
+    <?php endforeach; ?>
+  </div>
+  
 </div>
 
 <?php endif; ?>

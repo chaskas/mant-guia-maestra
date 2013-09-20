@@ -12,5 +12,10 @@ class PaginasForm extends BasePaginasForm
 {
   public function configure()
   {
+    $this->widgetSchema['tipopagina'] = new sfWidgetFormChoice(array(
+        'choices'   =>  array('Seleccione','NOR'=>'Normal','PUB'=>'Publicidad'),
+        'expanded'  =>  false,
+        'multiple'  =>  false
+    ));
   }
 }

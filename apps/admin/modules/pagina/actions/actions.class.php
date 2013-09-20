@@ -87,6 +87,27 @@ class paginaActions extends sfActions
       $this->redirect('pagina/edit?idpagina='.$paginas->getIdpagina());
     }
   }
+
+  public function executeGetImagenMini(sfWebRequest $request)
+  {
+    $response = $this->getResponse();
+    $response->clearHttpHeaders();
+    $response->setContentType('image/jpeg');
+    $response->sendHttpHeaders();
+    $pagina = Doctrine_Core::getTable('Paginas')->findOneByIdpagina(array($request->getParameter('id')));
+    echo $pagina->getImagenmini();
+    return sfView::NONE;
+  }
+  public function executeGetImagenPrincipal(sfWebRequest $request)
+  {
+    $response = $this->getResponse();
+    $response->clearHttpHeaders();
+    $response->setContentType('image/jpeg');
+    $response->sendHttpHeaders();
+    $pagina = Doctrine_Core::getTable('Paginas')->findOneByIdpagina(array($request->getParameter('id')));
+    echo $pagina->getImagenprincipal();
+    return sfView::NONE;
+  }
   public function executeGetSubcategoriasByCategoria(sfWebRequest $request)
   {
     $this->getResponse()->setContentType('application/json');
