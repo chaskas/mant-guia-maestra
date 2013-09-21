@@ -94,8 +94,8 @@ class paginaActions extends sfActions
     $response->clearHttpHeaders();
     $response->setContentType('image/jpeg');
     $response->sendHttpHeaders();
-    $pagina = Doctrine_Core::getTable('Paginas')->findOneByIdpagina(array($request->getParameter('id')));
-    echo $pagina->getImagenmini();
+    $pagina = Doctrine_Core::getTable('Paginas')->findOneByIdpagina(array($request->getParameter('id')))->getData();
+    echo ($pagina['imagenmini']);
     return sfView::NONE;
   }
   public function executeGetImagenPrincipal(sfWebRequest $request)
@@ -104,8 +104,8 @@ class paginaActions extends sfActions
     $response->clearHttpHeaders();
     $response->setContentType('image/jpeg');
     $response->sendHttpHeaders();
-    $pagina = Doctrine_Core::getTable('Paginas')->findOneByIdpagina(array($request->getParameter('id')));
-    echo $pagina->getImagenprincipal();
+    $pagina = Doctrine_Core::getTable('Paginas')->findOneByIdpagina(array($request->getParameter('id')))->getData();
+    echo ($pagina['imagenprincipal']);
     return sfView::NONE;
   }
   public function executeGetSubcategoriasByCategoria(sfWebRequest $request)

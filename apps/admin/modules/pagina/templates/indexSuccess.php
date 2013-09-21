@@ -63,7 +63,11 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">Buscador
-    
+    <?php if($sf_user->hasCredential(array('admin', 'super-admin'), false)) : ?>
+    <a href="<?php echo url_for('pagina/new') ?>" class="btn btn-success btn-xs pull-right" alt="Nuevo" title="Nuevo">
+      <span class="glyphicon glyphicon-plus"></span> Nuevo
+    </a>
+    <?php endif; ?>
   </div>
   <div class="panel panel-body">
     <form class="form-inline" role="form" method="POST" action="<?php echo url_for('pagina/index') ?>">
