@@ -5,6 +5,6 @@
     </a>
   </div>
   <div class="panel-body">
-    <?php include_partial('form', array('form' => $form)) ?>    
+    <?php include_partial('newForm', array('form' => $form)) ?>    
   </div>
 </div>

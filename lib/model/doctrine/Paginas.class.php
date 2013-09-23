@@ -12,4 +12,26 @@
  */
 class Paginas extends BasePaginas
 {
+  public function save(Doctrine_Connection $conn = null)
+  {
+    if ($this->isNew())
+    {
+      $nroPaginaActual = $this->getNropagina();
+
+      $ultimasPaginas = Doctrine_Core::getTable('Paginas')
+                            ->createQuery('a')
+                            ->where('nropagina >= ?', $nroPaginaActual)
+                            ->andWhere('nropagina <= ?', $nroPaginaActual + 1)
+                            ->orderBy('nropagina DESC')
+                            ->limit(1)
+                            ->execute();
+
+      $ultimaPagina = $ultimasPaginas->getFirst()->getNropagina();
+
+      $this->setNropagina($ultimaPagina + 0.1);
+
+    }
+ 
+    return parent::save($conn);
+  }
 }

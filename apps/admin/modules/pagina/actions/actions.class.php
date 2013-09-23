@@ -20,13 +20,25 @@ class paginaActions extends sfActions
 
       $this->buscador = $request->getParameter("buscador");
 
-      $this->paginas = Doctrine_Core::getTable('Paginas')
-      ->createQuery('a')
-      ->where("IdSubCategoria = ?", $this->buscador['subcategoria'])
-      ->andWhere("TipoPagina = ?", $this->buscador['tipo'])
-      ->execute();
+      if(isset($this->buscador['subcategoria']))
+      {
+        $this->paginas = Doctrine_Core::getTable('Paginas')
+        ->createQuery('a')
+        ->where("IdSubCategoria = ?", $this->buscador['subcategoria'])
+        ->andWhere("TipoPagina = ?", $this->buscador['tipo'])
+        ->execute();
 
-      $this->subcategoria = Doctrine_Core::getTable('Subcategoria')->find($this->buscador['subcategoria']);
+        $this->subcategoria = Doctrine_Core::getTable('Subcategoria')->find($this->buscador['subcategoria']);  
+
+      } else {
+        $this->paginas = Doctrine_Core::getTable('Paginas')
+        ->createQuery('a')
+        ->andWhere("TipoPagina = ?", $this->buscador['tipo'])
+        ->execute();
+
+      }
+
+      
 
     }
 
@@ -36,14 +48,17 @@ class paginaActions extends sfActions
 
   public function executeNew(sfWebRequest $request)
   {
-    $this->form = new PaginasForm();
+    $pagina = new Paginas();
+    $pagina->setTipopagina('PUB');
+    $this->form = new NewPaginaPUBForm($pagina);
   }
 
   public function executeCreate(sfWebRequest $request)
   {
     $this->forward404Unless($request->isMethod(sfRequest::POST));
-
-    $this->form = new PaginasForm();
+    $pagina = new Paginas();
+    $pagina->setTipopagina('PUB');
+    $this->form = new NewPaginaPUBForm($pagina);
 
     $this->processForm($request, $this->form);
 

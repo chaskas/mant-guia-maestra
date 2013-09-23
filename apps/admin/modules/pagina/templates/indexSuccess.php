@@ -102,11 +102,12 @@
 <?php if(count($paginas) > 0) : ?>
 
 <div class="panel panel-default">
-  <div class="panel-heading">Páginas Subcategoría <?php echo $subcategoria->getNombresubcategoria(); ?>
-    <?php if($sf_user->hasCredential(array('admin', 'super-admin'), false)) : ?>
-    <a href="<?php echo url_for('pagina/new') ?>" class="btn btn-success btn-xs pull-right" alt="Nuevo" title="Nuevo">
-      <span class="glyphicon glyphicon-plus"></span> Nuevo
-    </a>
+  <div class="panel-heading">
+
+    <?php if(isset($subcategoria)) : ?>
+    Páginas Subcategoría <?php echo $subcategoria->getNombresubcategoria(); ?>
+    <?php else : ?>
+    Páginas publicitarias
     <?php endif; ?>
   </div>
 
