@@ -1,5 +1,7 @@
-cache/
-log/
+./cache/
+./log/
+./cache/*
+*.log
 web/uploads/*
 config/databases.yml
 config/propel.ini
