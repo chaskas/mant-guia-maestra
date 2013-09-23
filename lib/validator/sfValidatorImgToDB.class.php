@@ -75,9 +75,6 @@ class sfValidatorImgToDB extends sfValidatorBase
 
     $this->addOption('resolution');
 
-    // $this->addOption('validated_file_class', 'sfValidatedFile');
-    // $this->addOption('path', null);
-
     $this->addMessage('max_size', 'File is too large (maximum is %max_size% bytes).');
     $this->addMessage('mime_types', 'Invalid mime type (%mime_type%).');
     $this->addMessage('partial', 'The uploaded file was only partially uploaded.');
@@ -165,6 +162,7 @@ class sfValidatorImgToDB extends sfValidatorBase
       }
     }
 
+    // check resolution
     if ($this->hasOption('resolution')) {
 
       $resolution = (is_array($this->getOption('resolution')) && count($this->getOption('resolution'))==2) ? $this->getOption('resolution') : null;
