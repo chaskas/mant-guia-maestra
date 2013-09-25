@@ -1,0 +1,1 @@
+ALTER TABLE productopagina ADD visible BIGINT DEFAULT 1 NOT NULL;

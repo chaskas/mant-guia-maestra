@@ -19,6 +19,7 @@ abstract class BaseProductopaginaFormFilter extends BaseFormFilterDoctrine
       'comprar'      => new sfWidgetFormFilterInput(),
       'skupadre'     => new sfWidgetFormFilterInput(),
       'padre'        => new sfWidgetFormFilterInput(),
+      'visible'      => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(
@@ -28,6 +29,7 @@ abstract class BaseProductopaginaFormFilter extends BaseFormFilterDoctrine
       'comprar'      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'skupadre'     => new sfValidatorPass(array('required' => false)),
       'padre'        => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'visible'      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('productopagina_filters[%s]');
@@ -56,6 +58,7 @@ abstract class BaseProductopaginaFormFilter extends BaseFormFilterDoctrine
       'comprar'      => 'Number',
       'skupadre'     => 'Text',
       'padre'        => 'Number',
+      'visible'      => 'Number',
     );
   }
 }

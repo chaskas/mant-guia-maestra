@@ -44,6 +44,7 @@ Productopagina:
     comprar: { type: integer(4), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
     skupadre: { type: string(7), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
     padre: { type: integer(4), fixed: false, unsigned: false, primary: false, notnull: false, autoincrement: false }
+    visible: { type: integer, fixed: false, unsigned: false, primary: false, notnull: true, default: 1, autoincrement: false }
 
 ProductopaginaDos:
   connection: doctrine

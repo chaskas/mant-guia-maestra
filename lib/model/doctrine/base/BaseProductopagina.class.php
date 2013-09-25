@@ -16,6 +16,7 @@ Doctrine_Manager::getInstance()->bindComponent('Productopagina', 'doctrine');
  * @property integer $comprar
  * @property string $skupadre
  * @property integer $padre
+ * @property integer $visible
  * 
  * @method integer        getPagina()       Returns the current record's "pagina" value
  * @method string         getSku()          Returns the current record's "sku" value
@@ -26,6 +27,7 @@ Doctrine_Manager::getInstance()->bindComponent('Productopagina', 'doctrine');
  * @method integer        getComprar()      Returns the current record's "comprar" value
  * @method string         getSkupadre()     Returns the current record's "skupadre" value
  * @method integer        getPadre()        Returns the current record's "padre" value
+ * @method integer        getVisible()      Returns the current record's "visible" value
  * @method Productopagina setPagina()       Sets the current record's "pagina" value
  * @method Productopagina setSku()          Sets the current record's "sku" value
  * @method Productopagina setTamanofuente() Sets the current record's "tamanofuente" value
@@ -35,6 +37,7 @@ Doctrine_Manager::getInstance()->bindComponent('Productopagina', 'doctrine');
  * @method Productopagina setComprar()      Sets the current record's "comprar" value
  * @method Productopagina setSkupadre()     Sets the current record's "skupadre" value
  * @method Productopagina setPadre()        Sets the current record's "padre" value
+ * @method Productopagina setVisible()      Sets the current record's "visible" value
  * 
  * @package    mant-guia-maestra
  * @subpackage model
@@ -123,6 +126,15 @@ abstract class BaseProductopagina extends sfDoctrineRecord
              'notnull' => false,
              'autoincrement' => false,
              'length' => 4,
+             ));
+        $this->hasColumn('visible', 'integer', null, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'default' => 1,
+             'autoincrement' => false,
              ));
     }
 

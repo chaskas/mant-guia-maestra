@@ -12,5 +12,12 @@ class ProductopaginaForm extends BaseProductopaginaForm
 {
   public function configure()
   {
+    $this->widgetSchema['visible'] = new sfWidgetFormChoice(array(
+        'choices'   =>  array(0 =>'Invisible',1 =>'Visible'),
+        'expanded'  =>  false,
+        'multiple'  =>  false
+    ));
+
+    $this->widgetSchema['visible']->setLabel('Visibilidad');
   }
 }

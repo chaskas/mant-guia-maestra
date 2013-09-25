@@ -1,7 +1,7 @@
 CREATE TABLE categorias (idcategoria INT, nombrecategoria VARCHAR(100), PRIMARY KEY(idcategoria)) ENGINE = INNODB;
 CREATE TABLE detalleversion (iddetalleversion INT AUTO_INCREMENT, idversion INT, nropagina FLOAT(4, 2), accion VARCHAR(15), INDEX idversion_idx (idversion), PRIMARY KEY(iddetalleversion)) ENGINE = INNODB;
 CREATE TABLE paginas (idpagina INT AUTO_INCREMENT, idsubcategoria INT, nropagina FLOAT(4, 2), imagenprincipal LONGBLOB, imagenmini LONGBLOB, tipopagina CHAR(3), INDEX idsubcategoria_idx (idsubcategoria), PRIMARY KEY(idpagina)) ENGINE = INNODB;
-CREATE TABLE productopagina (pagina INT, sku VARCHAR(7), tamanofuente INT, coorx INT, coory INT, unidad VARCHAR(10), comprar INT, skupadre VARCHAR(7), padre INT, PRIMARY KEY(pagina, sku, tamanofuente)) ENGINE = INNODB;
+CREATE TABLE productopagina (pagina INT, sku VARCHAR(7), tamanofuente INT, coorx INT, coory INT, unidad VARCHAR(10), comprar INT, skupadre VARCHAR(7), padre INT, visible BIGINT DEFAULT 1 NOT NULL, PRIMARY KEY(pagina, sku, tamanofuente)) ENGINE = INNODB;
 CREATE TABLE productopagina_dos (pagina INT, sku VARCHAR(7), tamanofuente INT, coorx INT, coory INT, unidad VARCHAR(10), comprar INT, skupadre VARCHAR(7), padre INT DEFAULT '1', PRIMARY KEY(pagina, sku, tamanofuente)) ENGINE = INNODB;
 CREATE TABLE subcategoria (idsubcategoria INT, idcategoria INT, nombresubcategoria VARCHAR(150), paginicio INT, pagfin INT, INDEX idcategoria_idx (idcategoria), PRIMARY KEY(idsubcategoria)) ENGINE = INNODB;
 CREATE TABLE tiendas (idtienda INT, idzona INT DEFAULT '0' NOT NULL, nombretienda VARCHAR(150) NOT NULL, latitud VARCHAR(20), longitud VARCHAR(20), INDEX idzona_idx (idzona), PRIMARY KEY(idtienda)) ENGINE = INNODB;

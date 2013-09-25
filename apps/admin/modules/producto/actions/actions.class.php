@@ -15,17 +15,19 @@ class productoActions extends sfActions
     $this->productopaginas = array();
 
     if($request->isMethod(sfRequest::POST))
-    {
+    { 
 
       $this->buscador = $request->getParameter("buscador");
 
-      $this->productopaginas = Doctrine_Core::getTable('Productopagina')
-      ->createQuery('a')
-      ->where("pagina = ?", $this->buscador['pagina'])
-      ->execute();
+      if(isset($this->buscador['pagina']))
+      {
+        $this->productopaginas = Doctrine_Core::getTable('Productopagina')
+        ->createQuery('a')
+        ->where("pagina = ?", $this->buscador['pagina'])
+        ->execute();
 
-      $this->pagina = Doctrine_Core::getTable('Paginas')->find($this->buscador['pagina']);
-
+        $this->pagina = Doctrine_Core::getTable('Paginas')->find($this->buscador['pagina']);
+      }
     }
 
 

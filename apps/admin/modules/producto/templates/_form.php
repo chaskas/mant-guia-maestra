@@ -55,6 +55,14 @@
     <?php echo $form['padre']->render(array('class'=>"form-control")) ?>
   </div>
 
+  <div class="form-group">
+    <label for="<?php echo $form['visible']->getWidget()->getAttribute('id') ?>">
+      <?php echo $form['visible']->renderLabel() ?>
+    </label>
+    <?php echo $form['visible']->renderError() ?>
+    <?php echo $form['visible']->render(array('class'=>"form-control")) ?>
+  </div>
+
   <?php echo $form->renderHiddenFields(false) ?>
   
   <a class="btn btn-default btn-sm" href="<?php echo url_for('producto/index') ?>">Volver</a>

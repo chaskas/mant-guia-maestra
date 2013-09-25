@@ -24,6 +24,7 @@ abstract class BaseProductopaginaForm extends BaseFormDoctrine
       'comprar'      => new sfWidgetFormInputText(),
       'skupadre'     => new sfWidgetFormInputText(),
       'padre'        => new sfWidgetFormInputText(),
+      'visible'      => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -36,6 +37,7 @@ abstract class BaseProductopaginaForm extends BaseFormDoctrine
       'comprar'      => new sfValidatorInteger(array('required' => false)),
       'skupadre'     => new sfValidatorString(array('max_length' => 7, 'required' => false)),
       'padre'        => new sfValidatorInteger(array('required' => false)),
+      'visible'      => new sfValidatorInteger(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('productopagina[%s]');
