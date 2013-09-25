@@ -1,6 +1,6 @@
 ./cache/
 ./log/
-./cache/*
+cache/
 *.log
 web/uploads/*
 config/databases.yml
