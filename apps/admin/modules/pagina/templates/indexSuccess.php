@@ -3,7 +3,6 @@
     $('#buscador_subcategoria').prop('disabled', 'disabled');
 
     $('#buscador_tipo').change(function(){
-      console.log('Cambio!');
       if($(this).val()=='NOR'){
         $('#div_buscador_categoria').show();
         $('#div_buscador_subcategoria').show();
@@ -21,7 +20,7 @@
         $('#buscador_subcategoria').prop('disabled', 'disabled');
         $.ajax({
             type: "GET",
-            url: 'http://<?php echo $_SERVER['SERVER_NAME']; ?>/api/get/categoria/'+idCategoria+'/subcategoria/json',
+            url: '<?php echo $sf_request->getUriPrefix().$sf_request->getRelativeUrlRoot() ?>/api/get/categoria/'+idCategoria+'/subcategoria/json',
             contentType: "application/json; charset=UTF-8",
             dataType: "json",
             success: function(json) {

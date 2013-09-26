@@ -14,7 +14,7 @@
         $('#paginas_idsubcategoria').prop('disabled', 'disabled');
         $.ajax({
             type: "GET",
-            url: 'http://<?php echo $_SERVER['SERVER_NAME']; ?>/api/get/categoria/'+idCategoria+'/subcategoria/json',
+            url: '<?php echo $sf_request->getUriPrefix().$sf_request->getRelativeUrlRoot() ?>/api/get/categoria/'+idCategoria+'/subcategoria/json',
             contentType: "application/json; charset=UTF-8",
             dataType: "json",
             success: function(json) {

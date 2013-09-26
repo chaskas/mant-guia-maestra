@@ -13,7 +13,7 @@
         $('#buscador_subcategoria').prop('disabled', 'disabled');
         $.ajax({
             type: "GET",
-            url: 'http://<?php echo $_SERVER['SERVER_NAME']; ?>/api/get/categoria/'+idCategoria+'/subcategoria/json',
+            url: '<?php echo $sf_request->getUriPrefix().$sf_request->getRelativeUrlRoot() ?>/api/get/categoria/'+idCategoria+'/subcategoria/json',
             contentType: "application/json; charset=UTF-8",
             dataType: "json",
             success: function(json) {
@@ -59,7 +59,7 @@
         $('#buscador_pagina').prop('disabled', 'disabled');
         $.ajax({
             type: "GET",
-            url: 'http://<?php echo $_SERVER['SERVER_NAME']; ?>/api/get/subcategoria/'+idSubcategoria+'/pagina/json',
+            url: '<?php echo $sf_request->getUriPrefix().$sf_request->getRelativeUrlRoot() ?>/api/get/subcategoria/'+idSubcategoria+'/pagina/json',
             contentType: "application/json; charset=UTF-8",
             dataType: "json",
             success: function(json) {
